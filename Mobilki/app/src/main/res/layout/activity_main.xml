@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="378dp"
+        android:layout_height="686dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.example.myapplication.Luk
+                android:id="@+id/luk2"
+                android:layout_width="match_parent"
+                android:layout_height="162dp"
+                android:onClick="kliknieto" />
+
+            <com.example.myapplication.Prostokat
+                android:id="@+id/prostokat"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:onClick="kliknieto" />
+
+            <com.example.myapplication.Kola
+                android:id="@+id/kola"
+                android:layout_width="384dp"
+                android:layout_height="177dp"
+                android:onClick="kliknieto" />
+
+            <com.example.myapplication.Elipsy
+                android:id="@+id/elipsy"
+                android:layout_width="match_parent"
+                android:layout_height="148dp"
+                android:onClick="kliknieto" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
