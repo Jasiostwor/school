@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
     <ScrollView
-        android:layout_width="378dp"
-        android:layout_height="686dp"
+        android:layout_width="369dp"
+        android:layout_height="725dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
@@ -21,6 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <com.example.myapplication.OkraglyProstokat
+                android:id="@+id/okraglyProstokat"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:onClick="kliknieto" />
 
             <com.example.myapplication.Luk
                 android:id="@+id/luk2"
@@ -36,15 +42,16 @@
 
             <com.example.myapplication.Kola
                 android:id="@+id/kola"
-                android:layout_width="384dp"
+                android:layout_width="match_parent"
                 android:layout_height="177dp"
                 android:onClick="kliknieto" />
 
             <com.example.myapplication.Elipsy
                 android:id="@+id/elipsy"
                 android:layout_width="match_parent"
-                android:layout_height="148dp"
+                android:layout_height="151dp"
                 android:onClick="kliknieto" />
+
         </LinearLayout>
     </ScrollView>
 

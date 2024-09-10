@@ -12,15 +12,15 @@ import androidx.annotation.Nullable;
 
 import java.util.Random;
 
-public class Elipsy extends View {
-    public Elipsy(Context context) {
+public class OkraglyProstokat extends View {
+    public OkraglyProstokat(Context context) {
         super(context);
     }
-    public Elipsy(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public OkraglyProstokat(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public Elipsy(Context context, @Nullable AttributeSet attrs) {
+    public OkraglyProstokat(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -41,21 +41,20 @@ public class Elipsy extends View {
         Random r = new Random();
 
 
-
         for (int i =0; i<10;i++) {
+            p.setARGB(255, r.nextInt(256),r.nextInt(256), r.nextInt(256));
             dx = r.nextInt(rozmiar);
             dy = r.nextInt(rozmiar);
             x = r.nextInt(szer2 - dx);
             y = r.nextInt(wys - dy);
-            p.setARGB(255, r.nextInt(256),r.nextInt(256), r.nextInt(256));
             RectF rect = new RectF(x, y, x + dx, y + dy);
-            canvas.drawOval(rect, p);
+            canvas.drawRoundRect(rect, 10, 10, p);
         }
 
         p.setTextSize(50);
         p.setTextAlign(Paint.Align.RIGHT);
         p.setColor(Color.BLACK);
-        canvas.drawText("Elipsa", szer-20, wys/2, p);
+        canvas.drawText("Okragly Prostokat", szer-20, wys/2, p);
 
         p.setStyle(Paint.Style.STROKE);
         p.setStrokeWidth(5);

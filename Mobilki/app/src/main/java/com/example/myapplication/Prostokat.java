@@ -34,19 +34,32 @@ public class Prostokat extends View {
         int rozmiar = (szer2 < wys ? szer2 : wys) - 10;
         int x, y, dx, dy;
         Paint p = new Paint();
+        p.setColor(Color.GRAY);
+        canvas.drawRect(0,0,szer-1,wys-1, p);
+
         p.setAntiAlias(true);
         p.setStyle(Paint.Style.FILL);
         Random r = new Random();
 
+        for (int i =0; i<10;i++) {
+            p.setARGB(255, r.nextInt(256),r.nextInt(256), r.nextInt(256));
+            dx = r.nextInt(rozmiar);
+            dy = r.nextInt(rozmiar);
+            x = r.nextInt(szer2 - dx);
+            y = r.nextInt(wys - dy);
+            RectF rect = new RectF(x, y, x + dx, y + dy);
+            canvas.drawRect(rect, p);
+        }
 
-        dx = r.nextInt(rozmiar);
-        dy = r.nextInt(rozmiar);
-        x = r.nextInt(szer2 - dx);
-        y = r.nextInt(wys - dy);
-        RectF rect = new RectF(x, y, x + dx, y + dy);
-        canvas.drawRect(rect, p);
+        p.setTextSize(50);
+        p.setTextAlign(Paint.Align.RIGHT);
+        p.setColor(Color.BLACK);
+        canvas.drawText("Prostokat", szer-20, wys/2, p);
 
-
+        p.setStyle(Paint.Style.STROKE);
+        p.setStrokeWidth(5);
+        p.setColor(Color.YELLOW);
+        canvas.drawRect(2,2,szer-3,wys-3,p);
         super.onDraw(canvas);
     }
 }
