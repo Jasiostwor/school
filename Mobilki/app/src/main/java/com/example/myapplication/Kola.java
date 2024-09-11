@@ -51,9 +51,7 @@ public class Kola extends View {
             RectF rect = new RectF(x, y, x + dx, y + dy);
             canvas.drawCircle(r.nextInt(szer), r.nextInt(wys), r.nextInt(100),p);
         }
-        for (int i =0; i<10;i++){
 
-        }
 
         p.setTextSize(50);
         p.setTextAlign(Paint.Align.RIGHT);

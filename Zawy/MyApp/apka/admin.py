@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import apka
-# ▲ spacja
-admin.site.register(apka)
+from .models import FrontPage
+
+admin.site.register(FrontPage)
