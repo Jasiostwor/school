@@ -1,0 +1,18 @@
+<head>
+    <title>Lista Stron</title>
+</head>
+<body>
+    <h1>Strony Główne</h1>
+    <ul>
+        {% for element in zmienna %}
+            <li>
+                <h2>{{ element.title }}</h2>
+                <p>{{ element.body }}</p>
+                <small>Opublikowano: {{ element.timestamp }}</small>
+            </li>
+        {% empty %}
+            <li>Brak stron do wyświetlenia.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
