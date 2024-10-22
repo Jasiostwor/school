@@ -1,0 +1,47 @@
+python manage.py shell
+
+----Sortowanie wg. pola imie:
+
+from apppka.models import Person
+persons = Person.objects.order_by('imie')
+for person in persons:
+    print(person.imie, person.nazwisko)
+
+-----Filtracja według grupy:
+
+from apppka.models import Group, Person
+group1 = Group.objects.get(name='grupka1')
+persons = Person.objects.filter(grupa=group1)
+
+for person in persons:
+    print(person.imie, person.nazwisko)
+
+------Wyszukiwanie pracowników, których imię zaczyna się na M:
+
+from apppka.models import Group, Person
+persons = Person.objects.filter(imie__startswith='M')
+
+for person in persons:
+    print(person.imie, person.nazwisko)
+
+------Wyszukiwanie pracowników, których nazwisko zawiera fragment da:
+
+from apppka.models import Group, Person
+persons = Person.objects.filter(nazwisko__icontains='da')
+
+for person in persons:
+    print(person.imie, person.nazwisko)
+
+
+------Wyświetlenie 5-ciu pierwszych i następnych 5-ciu pracowników:
+
+from apppka.models import Group, Person
+first_five = Person.objects.all()[:5]
+next_five = Person.objects.all()[5:10]
+
+
+for person in first_five:
+    print(person.imie, person.nazwisko)
+
+for person in next_five:
+    print(person.imie, person.nazwisko)
