@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Tytuł -->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Opis -->
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="193dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="4dp"
+        android:textColor="#666666"
+        android:textSize="14sp" />
+
+    <!-- Data i Autor -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!-- Data -->
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <!-- Separator -->
+        <TextView
+            android:text=" | "
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Autor -->
+        <TextView
+            android:id="@+id/textViewAuthor"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Treść -->
+    <TextView
+        android:id="@+id/textViewContent"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
