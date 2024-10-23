@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortowanie bąbelkowe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            height: 100vh; 
+        }
+        .section {
+            flex: 1;
+            padding: 20px;
+            
+        }
+        .left {
+            
+            color: black;
+        }
+        .center {
+            
+            color: black;
+        }
+        .right {
+            
+            color: black;
+        }
+        h1{
+            text-align: center  ;
+        }
+        h2{
+            text-align: center;
+        }
+        img{
+            height: 500px;
+            width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Sortowanie bąbelkowe</h1>
+
+    <div class="container">
+        <div class="section left">       
+            <h2>Lista kroków:</h2>
+            <p>
+                1. Przejdź przez cały zestaw danych, porównując sąsiednie elementy. <br>
+                2. Jeśli sąsiadujące ze sobą elementy są w złej kolejności (np. element poprzedni jest większy od następnego), zamień je miejscami. <br>
+                3. Powtórz krok 1 dla wszystkich pozostałych elementów, aż dotrzesz do ostatniej pary elementów. <br>
+                4. Po zakończeniu pierwszej iteracji największy element powinien znaleźć się na końcu kolekcji. <br>
+                5. Powtórz kroki 1-4 dla n-1 elementów, gdzie n jest rozmiarem kolekcji. <br>
+                6. Po zakończeniu wszystkich iteracji, cała kolekcja powinna być uporządkowana rosnąco. </p>
+        </div>
+        <div class="section center">
+            <h2>Przykład kodu</h2>
+            <pre><code class="language-java">
+
+                public class SortowanieBabelkowe {
+                    static void sortowanieBabelkowe(int[] zbior) {
+                        int rozmiar = zbior.length;
+                
+                        for (int i = 0; i < rozmiar - 1; i++) {
+                            for (int j = 0; j < rozmiar - 1 - i; j++) {
+                                if (zbior[j] > zbior[j + 1]) {
+                                    int temp = zbior[j];
+                                    zbior[j] = zbior[j + 1];
+                                    zbior[j + 1] = temp;
+                                }
+                            }
+                        }
+                    }
+                
+                    public static void main(String[] args) {
+                        int[] zbior = {7, 2, 1, 6, 8, 5, 3, 4};
+                
+                        sortowanieBabelkowe(zbior);
+                
+                        System.out.print("Posortowany zbior: ");
+                        for (int i = 0; i < zbior.length; i++) {
+                            System.out.print(zbior[i] + " ");
+                        }
+                    }
+                }
+                
+
+            </code></pre>   
+        </div>
+        <div class="section right">      
+            <p>Schemat blokowy</p>
+            <img src="./images/bombelkowe.png" alt="schemat" srcset="">
+        </div>
+    </div>
+
+</body>
+</html>

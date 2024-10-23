@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortowanie szybkie (metodą `dziel i zwyciężaj`)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            height: 100vh; 
+        }
+        .section {
+            flex: 1;
+            padding: 20px;
+            
+        }
+        .left {
+            
+            color: black;
+        }
+        .center {
+            
+            color: black;
+        }
+        .right {
+            
+            color: black;
+        }
+        h1{
+            text-align: center  ;
+        }
+        h2{
+            text-align: center;
+        }
+        img{
+            height: 500px;
+            width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Sortowanie szybkie (metodą `dziel i zwyciężaj`)</h1>
+
+    <div class="container">
+        <div class="section left">       
+            <h2>Lista kroków:</h2>
+            <p>
+                1. PWybierz element ze zbioru i oznacz go jako pivot (zwykle wybierany jest pierwszy, ostatni lub środkowy element). <br>
+                2. Podziel zbiór na dwie części: <br>
+                Elementy mniejsze niż pivot umieść po lewej stronie. <br>
+                Elementy większe niż pivot umieść po prawej stronie.
+                 <br>
+                3. Umieść pivot w odpowiednim miejscu – tak, aby wszystkie elementy po lewej były mniejsze, a po prawej większe. <br>
+                4. Rekurencyjnie powtórz kroki 1-3 dla każdej z dwóch części zbioru (lewej i prawej). <br>
+                5. Powtarzaj proces dzielenia, aż każda część zbioru będzie zawierać pojedyncze elementy lub będzie pusta. <br>
+                6. Po zakończeniu rekursji scal wszystkie części, aby uzyskać posortowany zbiór. <br>
+                7. Zakończ proces sortowania i wyeksportuj uporządkowany zbiór danych.</p>
+        </div>
+        <div class="section center">
+            <h2>Przykład kodu</h2>
+            <pre><code class="language-java">
+                public class QuickSort {
+                    public static void quicksort(int[] zbior, int lewy, int prawy) {
+                        int i = lewy, j = prawy;
+                        int os = zbior[(lewy + prawy) / 2];
+                
+                        while (i <= j) {
+                            while (zbior[i] < os) 
+                                i++;
+                            while (zbior[j] > os) 
+                                j--;
+                            if (i <= j) {
+                                int temp = zbior[i];
+                                zbior[i] = zbior[j];
+                                zbior[j] = temp;
+                                i++;
+                                j--;
+                            }
+                        }
+                
+                        if (lewy < j)
+                            quicksort(zbior, lewy, j);
+                        if (i < prawy)
+                            quicksort(zbior, i, prawy);
+                    }
+                
+                    public static void main(String[] args) {
+                        int[] zbior = {7, 2, 1, 6, 8, 5, 3, 4};
+                
+                        quicksort(zbior, 0, zbior.length - 1);
+                
+                        System.out.print("Posortowany zbior: ");
+                        for (int i = 0; i < zbior.length; i++) {
+                            System.out.print(zbior[i] + " ");
+                        }
+                    }
+                }                
+
+            </code></pre>   
+        </div>
+        <div class="section right">      
+            <p>Schemat blokowy</p>
+            <img src="./images/quicksort.png" alt="schemat" srcset="">
+        </div>
+    </div>
+
+</body>
+</html>

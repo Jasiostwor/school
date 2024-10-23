@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortowanie przez wstawianie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            height: 100vh; 
+        }
+        .section {
+            flex: 1;
+            padding: 20px;
+            
+        }
+        .left {
+            
+            color: black;
+        }
+        .center {
+            
+            color: black;
+        }
+        .right {
+            
+            color: black;
+        }
+        h1{
+            text-align: center  ;
+        }
+        h2{
+            text-align: center;
+        }
+        img{
+            height: 500px;
+            width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Sortowanie przez wstawianie</h1>
+
+    <div class="container">
+        <div class="section left">       
+            <h2>Lista kroków:</h2>
+            <p>
+                1. Przejdź przez zbiór od drugiego elementu do ostatniego. <br>
+                2. Wybierz bieżący element i oznacz go jako element do wstawienia. <br>
+                3. Porównuj wybrany element z elementami wcześniejszymi, zaczynając od elementu bezpośrednio przed nim. <br>
+                4. Jeżeli istnieje element przed elementem wybranym i jest od niego większy, przesuń ten element w prawo. <br>
+                5. Wstaw wybrany element w miejsce "dziury" powstałej po przesunięciu elementów większych. <br>
+                6. Powtarzaj kroki 2-5 dla każdego kolejnego elementu w zbiorze. <br>
+                7. Zakończ proces sortowania i wyeksportuj uporządkowany zbiór danych.</p>
+        </div>
+        <div class="section center">
+            <h2>Przykład kodu</h2>
+            <pre><code class="language-java">
+                public class SortowaniePrzezWstawianie{
+                    static void sortowaniePrzezWstawianie(int[] zbior){
+                        int rozmiar = zbior.length;
+    
+                        for(int i = 1; i < rozmiar; i++){
+                            int klucz = zbior[i];
+                            int j = i - 1;
+    
+                            while(j >= 0 && zbior[i] > klucz){
+                                zbior[j+1] = zbior[j];
+                                j--;
+                            }
+    
+                            zbior[j + 1] = klucz;
+                        }
+                    }
+
+                    public static void main(String[] args){
+                        int[] zbior = {7,2,5,5,3,2,8,6};
+
+                        sortowaniePrzezWstawianie(zbior);
+
+                        System.out.print("Posortowany zbior: ");
+                        for (int i = 0; i < zbior.length; i++){
+                            System.out.print(zbior[i] + " ");
+                        }
+                    }
+                }
+
+            </code></pre>   
+        </div>
+        <div class="section right">      
+            <p>Schemat blokowy</p>
+            <img src="./images/wstawianie.png" alt="schemat" srcset="">
+        </div>
+    </div>
+
+</body>
+</html>

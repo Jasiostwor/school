@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortowanie przez wybieranie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            height: 100vh; 
+        }
+        .section {
+            flex: 1;
+            padding: 20px;
+            
+        }
+        .left {
+            
+            color: black;
+        }
+        .center {
+            
+            color: black;
+        }
+        .right {
+            
+            color: black;
+        }
+        h1{
+            text-align: center  ;
+        }
+        h2{
+            text-align: center;
+        }
+        img{
+            height: 500px;
+            width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Sortowanie przez wybieranie</h1>
+
+    <div class="container">
+        <div class="section left">       
+            <h2>Lista kroków:</h2>
+            <p>
+                1. Przejdź przez zbiór od pierwszego elementu do przedostatniego. <br>
+                2. Uznaj bieżący element za tymczasowo najmniejszy. <br>
+                3. Przejdź przez pozostałą, nieposortowaną część zbioru, szukając elementu mniejszego niż tymczasowo najmniejszy. <br>
+                4. Jeżeli znajdziesz element mniejszy, uznaj go za nowy najmniejszy. <br>
+                5. Po zakończeniu przeglądania nieposortowanej części zbioru, zamień miejscami bieżący element z elementem najmniejszym. <br>
+                6. Powtarzaj kroki 2-5 dla każdego kolejnego elementu w zbiorze. <br>
+                7. Zakończ proces, gdy cały zbiór będzie posortowany, i wyeksportuj uporządkowany zbiór danych.</p>
+        </div>
+        <div class="section center">
+            <h2>Przykład kodu</h2>
+            <pre><code class="language-java">
+
+                class SortowaniePrzezWybor {
+                    static void sortowaniePrzezWybor(int[] zbior) {
+                        int rozmiar = zbior.length;
+                
+                        for (int i = 0; i < rozmiar - 1; i++) {
+                            int indeksMinimum = i;
+                
+                            for (int j = i + 1; j < rozmiar; j++) {
+                                if (zbior[j] < zbior[indeksMinimum]) {
+                                    indeksMinimum = j;
+                                }
+                            }
+                
+                            int temp = zbior[i];
+                            zbior[i] = zbior[indeksMinimum];
+                            zbior[indeksMinimum] = temp;
+                        }
+                    }
+                
+                    public static void main(String[] args) {
+                        int[] zbior = {7, 2, 1, 6, 8, 5, 3, 4};
+                
+                        sortowaniePrzezWybor(zbior);
+                
+                        System.out.print("Posortowany zbior: ");
+                        for (int i = 0; i < zbior.length; i++) {
+                            System.out.print(zbior[i] + " ");
+                        }
+                    }
+                }
+                
+            </code></pre>   
+        </div>
+        <div class="section right">      
+            <p>Schemat blokowy</p>
+            <img src="./images/wybieranie.png" alt="schemat" srcset="">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>

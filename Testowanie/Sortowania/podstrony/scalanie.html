@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortowanie przez scalanie </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            height: 100vh; 
+        }
+        .section {
+            flex: 1;
+            padding: 20px;
+            
+        }
+        .left {
+            
+            color: black;
+        }
+        .center {
+            
+            color: black;
+        }
+        .right {
+            
+            color: black;
+        }
+        h1{
+            text-align: center  ;
+        }
+        h2{
+            text-align: center;
+        }
+        img{
+            height: 500px;
+            width: 350px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Sortowanie przez scalanie </h1>
+
+    <div class="container">
+        <div class="section left">       
+            <h2>Lista kroków:</h2>
+            <p>
+                1. Jeśli zbiór zawiera jeden lub zero elementów, jest już posortowany. Zwróć ten zbiór. <br>
+                2. Podziel zbiór na dwie połowy. <br>
+                3. Rekurencyjnie zastosuj algorytm sortowania przez scalanie dla każdej z połówek. <br>
+                4. Scalaj posortowane połówki w celu utworzenia posortowanego zbioru: <br>
+                Utwórz nową tablicę lub listę, która będzie przechowywać scalone elementy. <br>
+                Porównuj elementy z obu połówek, zaczynając od ich początków. <br>
+                Dodawaj mniejszy element do scalanej tablicy/listy. <br>
+                Jeśli jedna z połówek zostanie już w pełni przeanalizowana, dodaj pozostałe elementy z drugiej połowy do scalanej tablicy/listy. <br>
+                Powtarzaj te kroki, aż obie połówki zostaną w pełni rozwiązane i wszystkie elementy zostaną umieszczone w scalonej tablicy/liście. <br>
+                5. Zwróć scalony zbiór. <br>
+
+        </div>
+        <div class="section center">
+            <h2>Przykład kodu</h2>
+            <pre><code class="language-java">
+                public class SortowaniePrzezScalanie {
+                    static void scal(int[] zbior, int lewy, int srodek, int prawy) {
+                        int rozmiar1 = srodek - lewy + 1;
+                        int rozmiar2 = prawy - srodek;
+                
+                        int[] lewaCzesc = new int[rozmiar1];
+                        int[] prawaCzesc = new int[rozmiar2];
+                
+                        for (int i = 0; i < rozmiar1; i++)
+                            lewaCzesc[i] = zbior[lewy + i];
+                        for (int j = 0; j < rozmiar2; j++)
+                            prawaCzesc[j] = zbior[srodek + 1 + j];
+                
+                        int i = 0, j = 0, k = lewy;
+                
+                        while (i < rozmiar1 && j < rozmiar2) {
+                            if (lewaCzesc[i] <= prawaCzesc[j]) {
+                                zbior[k] = lewaCzesc[i];
+                                i++;
+                            } else {
+                                zbior[k] = prawaCzesc[j];
+                                j++;
+                            }
+                            k++;
+                        }
+                
+                        while (i < rozmiar1) {
+                            zbior[k] = lewaCzesc[i];
+                            i++;
+                            k++;
+                        }
+                
+                        while (j < rozmiar2) {
+                            zbior[k] = prawaCzesc[j];
+                            j++;
+                            k++;
+                        }
+                    }
+                
+                    static void sortowaniePrzezScalanie(int[] zbior, int lewy, int prawy) {
+                        if (lewy < prawy) {
+                            int srodek = (lewy + prawy) / 2;
+                
+                            sortowaniePrzezScalanie(zbior, lewy, srodek);
+                            sortowaniePrzezScalanie(zbior, srodek + 1, prawy);
+                
+                            scal(zbior, lewy, srodek, prawy);
+                        }
+                    }
+                
+                    public static void main(String[] args) {
+                        int[] zbior = {7, 2, 1, 6, 8, 5, 3, 4};
+                
+                        sortowaniePrzezScalanie(zbior, 0, zbior.length - 1);
+                
+                        System.out.print("Posortowany zbior: ");
+                        for (int i = 0; i < zbior.length; i++) {
+                            System.out.print(zbior[i] + " ");
+                        }
+                    }
+                }
+                
+            </code></pre>   
+        </div>
+        <div class="section right">      
+            <p>Schemat blokowy</p>
+            <img src="./images/scalanie.png" alt="schemat" srcset="">
+        </div>
+    </div>
+
+</body>
+</html>
