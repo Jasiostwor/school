@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Obszerny Poradnik do Reacta: Props i State</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            max-width: 960px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+            margin-top: 1em;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 0.3em;
+        }
+        p {
+            color: #555;
+        }
+        ul {
+            margin-left: 20px;
+            color: #555;
+        }
+        code {
+            background-color: #f9f9f9;
+            padding: 2px 4px;
+            font-family: monospace;
+            color: #c7254e;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        pre code {
+            color: #f8f8f2;
+        }
+        .code-line {
+            display: block;
+            margin: 0;
+        }
+        .toc {
+            background-color: #eaeaea;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #007acc;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            background-color: #fffae6;
+            padding: 10px;
+            border-left: 5px solid #ffecb3;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reacta: Props i State z Przykładami</h1>
+        <p>React to jedna z najpopularniejszych bibliotek JavaScript do budowy interfejsów użytkownika. Dwa kluczowe koncepty, które musisz zrozumieć podczas pracy z Reactem, to <strong>props</strong> i <strong>state</strong>. W tym poradniku omówimy te pojęcia w szczegółach i zaprezentujemy wiele praktycznych przykładów.</p>
+
+        <h2>Spis Treści</h2>
+        <div class="toc">
+            <ul>
+                <li><a href="#wprowadzenie-do-props">1. Wprowadzenie do Props</a>
+                    <ul>
+                        <li><a href="#czym-są-props">Czym są Props?</a></li>
+                        <li><a href="#przekazywanie-props">Przekazywanie Props</a></li>
+                        <li><a href="#props-vs-state">Props vs State</a></li>
+                    </ul>
+                </li>
+                <li><a href="#przykłady-użycia-props">2. Przykłady Użycia Props</a>
+                    <ul>
+                        <li><a href="#przykład-1-prosty-komponent-z-props">Przykład 1: Prosty Komponent z Props</a></li>
+                        <li><a href="#przykład-2-domyślne-wartości-props">Przykład 2: Domyślne Wartości Props</a></li>
+                        <li><a href="#przykład-3-walidacja-props-z-proptypes">Przykład 3: Walidacja Props z PropTypes</a></li>
+                    </ul>
+                </li>
+                <li><a href="#wprowadzenie-do-state">3. Wprowadzenie do State</a>
+                    <ul>
+                        <li><a href="#czym-jest-state">Czym jest State?</a></li>
+                        <li><a href="#inicjalizacja-state">Inicjalizacja State</a></li>
+                        <li><a href="#aktualizacja-state">Aktualizacja State</a></li>
+                    </ul>
+                </li>
+                <li><a href="#przykłady-użycia-state">4. Przykłady Użycia State</a>
+                    <ul>
+                        <li><a href="#przykład-1-licznik">Przykład 1: Licznik</a></li>
+                        <li><a href="#przykład-2-lista-z-dodawaniem-elementów">Przykład 2: Lista z Możliwością Dodawania Elementów</a></li>
+                        <li><a href="#przykład-3-użycie-usestate-z-obiektami">Przykład 3: Użycie useState z Obiektami</a></li>
+                    </ul>
+                </li>
+                <li><a href="#podsumowanie">5. Podsumowanie</a></li>
+            </ul>
+        </div>
+
+        <h2 id="wprowadzenie-do-props">1. Wprowadzenie do Props</h2>
+        <h3 id="czym-są-props">Czym są Props?</h3>
+        <p><strong>Props</strong> (skrót od "properties") to parametry przekazywane do komponentów Reacta, które pozwalają na dostosowanie ich zachowania i wyglądu. Są one podobne do argumentów funkcji w JavaScript.</p>
+
+        <h3 id="przekazywanie-props">Przekazywanie Props</h3>
+        <p>Props są przekazywane do komponentów jako atrybuty w JSX.</p>
+        <pre><code class="language-javascript">// Definicja komponentu
+function Greeting(props) &#123;
+  return &lt;h1&gt;Witaj, &#123;props.name&#125;!&lt;/h1&gt;;
+&#125;
+
+// Użycie komponentu z props
+&lt;Greeting name="Jan" /&gt;;</code></pre>
+
+        <h3 id="props-vs-state">Props vs State</h3>
+        <ul>
+            <li><strong>Props</strong>: Są przekazywane do komponentu z zewnątrz i są niezmienne w kontekście komponentu.</li>
+            <li><strong>State</strong>: Jest zarządzany wewnątrz komponentu i może być zmieniany w czasie.</li>
+        </ul>
+
+        <h2 id="przykłady-użycia-props">2. Przykłady Użycia Props</h2>
+        <h3 id="przykład-1-prosty-komponent-z-props">Przykład 1: Prosty Komponent z Props</h3>
+        <pre><code class="language-javascript">function Welcome(props) &#123;
+  return &lt;h1&gt;Witaj, &#123;props.username&#125;!&lt;/h1&gt;;
+&#125;
+
+// Użycie komponentu
+&lt;Welcome username="Anna" /&gt;;</code></pre>
+
+        <h3 id="przykład-2-domyślne-wartości-props">Przykład 2: Domyślne Wartości Props</h3>
+        <p>Możesz zdefiniować domyślne wartości dla props w przypadku, gdy nie zostaną one przekazane.</p>
+        <pre><code class="language-javascript">function Button(props) &#123;
+  return &lt;button&gt;&#123;props.label&#125;&lt;/button&gt;;
+&#125;
+
+Button.defaultProps = &#123;
+  label: "Kliknij mnie",
+&#125;;
+
+// Użycie komponentu bez przekazania label
+&lt;Button /&gt;;</code></pre>
+
+        <h3 id="przykład-3-walidacja-props-z-proptypes">Przykład 3: Walidacja Props z PropTypes</h3>
+        <p>Możesz użyć biblioteki <strong>PropTypes</strong> do walidacji typów props.</p>
+        <pre><code class="language-javascript">import PropTypes from 'prop-types';
+
+function UserProfile(props) &#123;
+  return &lt;div&gt;&#123;props.name&#125;&lt;/div&gt;;
+&#125;
+
+UserProfile.propTypes = &#123;
+  name: PropTypes.string.isRequired,
+&#125;;</code></pre>
+
+        <h2 id="wprowadzenie-do-state">3. Wprowadzenie do State</h2>
+        <h3 id="czym-jest-state">Czym jest State?</h3>
+        <p><strong>State</strong> to obiekt, który przechowuje dynamiczne dane komponentu i wpływa na jego renderowanie. W funkcjonalnych komponentach używamy hooka <code>useState</code> do zarządzania stanem.</p>
+
+        <h3 id="inicjalizacja-state">Inicjalizacja State</h3>
+        <pre><code class="language-javascript">import &#123; useState &#125; from 'react';
+
+function Counter() &#123;
+  const [count, setCount] = useState(0);
+  return &lt;div&gt;&#123;count&#125;&lt;/div&gt;;
+&#125;</code></pre>
+
+        <h3 id="aktualizacja-state">Aktualizacja State</h3>
+        <p>Stan aktualizujemy za pomocą funkcji ustawiającej (np. <code>setCount</code>).</p>
+        <pre><code class="language-javascript">&lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Zwiększ&lt;/button&gt;</code></pre>
+
+        <h2 id="przykłady-użycia-state">4. Przykłady Użycia State</h2>
+        <h3 id="przykład-1-licznik">Przykład 1: Licznik</h3>
+        <pre><code class="language-javascript">import &#123; useState &#125; from 'react';
+
+function Counter() &#123;
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Wartość licznika: &#123;count&#125;&lt;/p&gt;
+      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Zwiększ&lt;/button&gt;
+      &lt;button onClick=&#123;() =&gt; setCount(count - 1)&#125;&gt;Zmniejsz&lt;/button&gt;
+    &lt;/div&gt;
+  );
+&#125;</code></pre>
+
+        <h3 id="przykład-2-lista-z-dodawaniem-elementów">Przykład 2: Lista z Możliwością Dodawania Elementów</h3>
+        <pre><code class="language-javascript">import React, &#123; useState &#125; from 'react';
+
+function TodoList() &#123;
+  const [items, setItems] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  const addItem = () => &#123;
+    if (inputValue.trim() !== '') &#123;
+      setItems([...items, inputValue]);
+      setInputValue('');
+    &#125;
+  &#125;;
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Lista Zadań&lt;/h2&gt;
+      &lt;input
+        type="text"
+        placeholder="Dodaj nowe zadanie"
+        value=&#123;inputValue&#125;
+        onChange=&#123;(e) =&gt; setInputValue(e.target.value)&#125;
+      /&gt;
+      &lt;button onClick=&#123;addItem&#125;&gt;Dodaj&lt;/button&gt;
+      &lt;ul&gt;
+        &#123;items.map((item, index) => (
+          &lt;li key=&#123;index&#125;&gt;&#123;item&#125;&lt;/li&gt;
+        ))&#125;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+&#125;
+
+export default TodoList;</code></pre>
+
+        <h3 id="przykład-3-użycie-usestate-z-obiektami">Przykład 3: Użycie useState z Obiektami</h3>
+        <pre><code class="language-javascript">import &#123; useState &#125; from 'react';
+
+function Profile() &#123;
+  const [user, setUser] = useState(&#123;
+    name: '',
+    age: null,
+  &#125;);
+
+  const updateName = (e) =&gt; &#123;
+    setUser(&#123;
+      ...user,
+      name: e.target.value,
+    &#125;);
+  &#125;;
+
+  const updateAge = (e) =&gt; &#123;
+    setUser(&#123;
+      ...user,
+      age: e.target.value,
+    &#125;);
+  &#125;;
+
+  return (
+    &lt;div&gt;
+      &lt;input type="text" placeholder="Imię" onChange=&#123;updateName&#125; /&gt;
+      &lt;input type="number" placeholder="Wiek" onChange=&#123;updateAge&#125; /&gt;
+      &lt;p&gt;
+        Imię: &#123;user.name&#125;, Wiek: &#123;user.age&#125;
+      &lt;/p&gt;
+    &lt;/div&gt;
+  );
+&#125;</code></pre>
+
+        <h2 id="podsumowanie">5. Podsumowanie</h2>
+        <p>Zrozumienie <strong>props</strong> i <strong>state</strong> jest kluczowe dla efektywnego korzystania z Reacta. Props pozwalają na przekazywanie danych do komponentów, czyniąc je bardziej elastycznymi i wielokrotnego użytku. State umożliwia komponentom zarządzanie własnym stanem i reagowanie na interakcje użytkownika.</p>
+
+        <div class="note">
+            <p><strong>Pamiętaj:</strong></p>
+            <ul>
+                <li><strong>Props</strong> są niezmienne w kontekście komponentu, do którego są przekazywane.</li>
+                <li><strong>State</strong> można zmieniać, co powoduje ponowne renderowanie komponentu z nowymi danymi.</li>
+                <li>Przy pracy z obiektami w <strong>state</strong>, używaj operatora rozproszenia (<code>...</code>) do aktualizacji stanu bez mutowania oryginalnego obiektu.</li>
+            </ul>
+        </div>
+
+        <p>Teraz, gdy masz solidne podstawy, możesz zacząć budować bardziej złożone aplikacje React, wykorzystując moc props i state.</p>
+    </div>
+
+    <script src="prism.js"></script>
+</body>
+
+</html>
