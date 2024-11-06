@@ -70,16 +70,16 @@
                     static void sortowaniePrzezWstawianie(int[] zbior){
                         int rozmiar = zbior.length;
     
-                        for(int i = 1; i < rozmiar; i++){
-                            int klucz = zbior[i];
+                        for(int i = 1; i < rozmiar; i++){ -- (1)
+                            int klucz = zbior[i]; -- (2)
                             int j = i - 1;
     
-                            while(j >= 0 && zbior[i] > klucz){
-                                zbior[j+1] = zbior[j];
+                            while(j >= 0 && zbior[i] > klucz){ -- (3)
+                                zbior[j+1] = zbior[j]; -- (4)
                                 j--;
                             }
     
-                            zbior[j + 1] = klucz;
+                            zbior[j + 1] = klucz; -- (5)
                         }
                     }
 

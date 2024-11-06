@@ -110,13 +110,13 @@
                     }
                 
                     static void sortowaniePrzezScalanie(int[] zbior, int lewy, int prawy) {
-                        if (lewy < prawy) {
-                            int srodek = (lewy + prawy) / 2;
+                        if (lewy < prawy) { -- (1)
+                            int srodek = (lewy + prawy) / 2; -- (2)
                 
-                            sortowaniePrzezScalanie(zbior, lewy, srodek);
+                            sortowaniePrzezScalanie(zbior, lewy, srodek); -- (3)
                             sortowaniePrzezScalanie(zbior, srodek + 1, prawy);
                 
-                            scal(zbior, lewy, srodek, prawy);
+                            scal(zbior, lewy, srodek, prawy); -- (4)
                         }
                     }
                 

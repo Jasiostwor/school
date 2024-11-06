@@ -71,8 +71,8 @@
             <pre><code class="language-java">
                 public class QuickSort {
                     public static void quicksort(int[] zbior, int lewy, int prawy) {
-                        int i = lewy, j = prawy;
-                        int os = zbior[(lewy + prawy) / 2];
+                        int i = lewy, j = prawy; -- (1)
+                        int os = zbior[(lewy + prawy) / 2]; -- (2)
                 
                         while (i <= j) {
                             while (zbior[i] < os) 
@@ -88,8 +88,8 @@
                             }
                         }
                 
-                        if (lewy < j)
-                            quicksort(zbior, lewy, j);
+                        if (lewy < j) -- (3)
+                            quicksort(zbior, lewy, j); -- (4)
                         if (i < prawy)
                             quicksort(zbior, i, prawy);
                     }

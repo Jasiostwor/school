@@ -71,10 +71,10 @@
                         int rozmiar = zbior.length;
                 
                         for (int i = 0; i < rozmiar - 1; i++) {
-                            for (int j = 0; j < rozmiar - 1 - i; j++) {
+                            for (int j = 0; j < rozmiar - 1 - i; j++) { -- (1)
                                 if (zbior[j] > zbior[j + 1]) {
                                     int temp = zbior[j];
-                                    zbior[j] = zbior[j + 1];
+                                    zbior[j] = zbior[j + 1]; -- (2)
                                     zbior[j + 1] = temp;
                                 }
                             }
